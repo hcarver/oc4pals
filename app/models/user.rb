@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-  devise :trackable, :validatable
+  acts_as_token_authenticatable
+  devise :trackable
+  validates :email, presence: true, uniqueness: true
 end
