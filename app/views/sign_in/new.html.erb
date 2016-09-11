@@ -1,2 +1,15 @@
-<h1>SignIn#new</h1>
-<p>Find me in app/views/sign_in/new.html.erb</p>
+<div class="jumbotron">
+    <p>
+        Enter your email address to login to your existing account or register a new account.
+    </p>
+    <%= form_for(User.new, url: sign_in_index_path) do |f| %>
+
+    <div class="form-group">
+        <label for="user[email]">Email address</label>
+        <%= f.email_field :email, class: "form-control", placeholder: "e@ma.il" %>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <% end %>
+</div>
