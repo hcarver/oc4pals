@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # Auth
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
+gem 'cancancan'
 
 # Bootstrap
 gem 'bootstrap'

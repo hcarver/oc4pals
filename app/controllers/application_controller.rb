@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+    protect_from_forgery with: :exception
 
-  acts_as_token_authentication_handler_for User, fallback: :none
+    acts_as_token_authentication_handler_for User, fallback: :none
+
+    rescue_from CanCan::AccessDenied do |exception|
+        redirect_to root_url, alert: exception.message
+    end
 end

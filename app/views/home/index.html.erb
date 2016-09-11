@@ -1,18 +1,48 @@
 <div class="jumbotron">
-  <h1 class="display-3">Hiya!</h1>
-  <p class="lead">
-    This is Only Connect For Pals, a site for creating your own quizzes in the style of Only Connect that you can use with your friends.</p>
-  <hr class="m-y-2">
-  <p>Here's how you get started.</p>
-  <ol>
-    <li>
-      <%= link_to "Create an account or sign in", new_sign_in_path %>
-    </li>
-    <li>
-      Click on the link in the email you receive
-    </li>
-    <li>
-      Start creating an OC show
-    </li>
-  </ol>
+    <h1 class="display-3">Hiya!</h1>
+    <p class="lead">
+        This is Only Connect For Pals, a site for creating your own quizzes in the style of Only Connect that you can use with your friends.</p>
+    <hr class="m-y-2">
+    <% if user_signed_in? %>
+    <% link_to "Create a new OC show!", new_oc_path, class: "btn btn-primary" %>
+    <h6>Your OC shows</h6>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <% @your_ocs.each do |oc| %>
+            <tr>
+                <td><%= link_to oc.name, oc_path(oc) %></td>
+                <td><%= link_to "edit", edit_oc_path(oc) %></td>
+                <td><%= link_to "delete", destroy_oc_path(oc), method: :delete %></td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
+    <% else %>
+    <p>Here's how you get started.</p>
+    <ol>
+        <li>
+            <%= link_to "Create an account or sign in", new_sign_in_path %>
+        </li>
+        <li>
+            Click on the link in the email you receive
+        </li>
+        <li>
+            Start creating an OC show
+        </li>
+    </ol>
+    <% end %>
+</div>
+
+<h3>OC shows you can play</h3>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <% @public_ocs.each do |oc| %>
+        <tr>
+            <td><%= link_to oc.name, oc_path(oc) %></td>
+            <td><%= link_to "edit", edit_oc_path(oc) %></td>
+            <td><%= link_to "delete", destroy_oc_path(oc), method: :delete %></td>
+        </tr>
+        <% end %>
+    </table>
 </div>
