@@ -4,9 +4,10 @@
     This is Only Connect For Pals, a site for creating your own quizzes in the style of Only Connect that you can use with your friends.
   %hr.m-y-2/
   - if user_signed_in?
+    %h2 You're signed in
     %p
       = link_to "Create a new OC show!", new_oc_path
-    %h3 Your OC shows
+    %h4 Your OC shows
     - if @your_ocs.empty?
       .text-muted
         You don't have any yet.
@@ -31,7 +32,7 @@
         Click on the link in the email you receive
       %li
         Start creating an OC show
-%h3 OC shows everyone can play
+%h4 OC shows everyone can play
 .table-responsive
   %table.table.table-striped.table-bordered
     - @public_ocs.each do |oc|
