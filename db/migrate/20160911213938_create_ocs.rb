@@ -1,4 +1,4 @@
-class CreateShows < ActiveRecord::Migration[5.0]
+class CreateOcs < ActiveRecord::Migration[5.0]
   def change
     create_table :ocs do |t|
       t.string :name, null: false
