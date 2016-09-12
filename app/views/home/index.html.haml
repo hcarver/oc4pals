@@ -1,0 +1,38 @@
+.jumbotron
+  %h1.display-3 Hiya!
+  %p.lead
+    This is Only Connect For Pals, a site for creating your own quizzes in the style of Only Connect that you can use with your friends.
+  %hr.m-y-2/
+  - if user_signed_in?
+    %p
+      = link_to "Create a new OC show!", new_oc_path
+    %h3 Your OC shows
+    - if @your_ocs.empty?
+      .text-muted
+        You don't have any yet.
+        = link_to "Create one!", new_oc_path
+    - else
+      .table-responsive
+        %table.table.table-striped.table-bordered
+          - @your_ocs.each do |oc|
+            %tr
+              %td= link_to oc.name, oc_path(oc)
+              %td= link_to "edit", edit_oc_path(oc)
+              %td= link_to "delete", destroy_oc_path(oc), method: :delete
+  - else
+    %p Here's how you get started.
+    %ol
+      %li
+        = link_to "Create an account or sign in", new_sign_in_path
+      %li
+        Click on the link in the email you receive
+      %li
+        Start creating an OC show
+%h3 OC shows you can play
+.table-responsive
+  %table.table.table-striped.table-bordered
+    - @public_ocs.each do |oc|
+      %tr
+        %td= link_to oc.name, oc_path(oc)
+        %td= link_to "edit", edit_oc_path(oc)
+        %td= link_to "delete", destroy_oc_path(oc), method: :delete
