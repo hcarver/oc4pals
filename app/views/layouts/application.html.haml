@@ -7,16 +7,16 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %nav.navbar.navbar-dark.bg-primary
+      %a.navbar-brand{:href => "#"} Only Connect For Pals
+      %ul.nav.navbar-nav
+        %li.nav-item.active
+          = link_to "Get started", new_sign_in_path, class:"nav-link"
     - if alert
       .alert.alert-danger{:role => "alert"}
         = alert
     - if notice
       .alert.alert-info{:role => "alert"}
         = notice
-    %nav.navbar.navbar-dark.bg-primary
-      %a.navbar-brand{:href => "#"} Only Connect For Pals
-      %ul.nav.navbar-nav
-        %li.nav-item.active
-          = link_to "Get started", new_sign_in_path, class:"nav-link"
     .container
       = yield
