@@ -14,6 +14,9 @@ class OcsController < ApplicationController
   end
 
   def show
+    if @oc.round_three_puzzgrid.nil?
+      @oc.build_round_three_puzzgrid
+    end
   end
 
   def edit

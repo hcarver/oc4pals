@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912185623) do
+ActiveRecord::Schema.define(version: 20160912204529) do
 
   create_table "four_clue_questions", force: :cascade do |t|
     t.integer  "oc_id"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20160912185623) do
     t.boolean  "public",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "round_three_puzzgrids", force: :cascade do |t|
+    t.integer "oc_id"
+    t.string  "grid_one", null: false
+    t.string  "grid_two", null: false
+    t.index ["oc_id"], name: "index_round_three_puzzgrids_on_oc_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,6 +12,7 @@ class Ability
     can :manage, RoundOneQuestion, oc: { owner_id: user.id }
     can :manage, RoundTwoQuestion, oc: { owner_id: user.id }
     can :manage, FourClueQuestion, oc: { owner_id: user.id }
+    can :manage, RoundThreePuzzgrid, oc: { owner_id: user.id }
 
     # Define abilities for the passed in user here. For example:
     #

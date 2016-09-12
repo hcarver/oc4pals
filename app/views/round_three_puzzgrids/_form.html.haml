@@ -1,0 +1,8 @@
+=form_for(round_three_puzzgrid, url: oc_round_three_puzzgrid_path(round_three_puzzgrid.oc), html: {class: 'puzzgrid-section'}, remote: true) do |f|
+  .form-group
+    = f.label :grid_one, "URL for grid 1"
+    = f.text_field :grid_one, class: "form-control", placeholder: "http://puzzgrid.com/1234"
+  .form-group
+    = f.label :grid_two, "URL for grid 2"
+    = f.text_field :grid_two, class: "form-control", placeholder: "http://puzzgrid.com/2345"
+  = f.submit "Save", class: 'btn btn-primary'

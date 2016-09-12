@@ -27,3 +27,15 @@
     = render "four_clue_questions/show", q: r1q
 
 %h3 R3
+
+URLs for your
+=link_to 'Puzzgrid', 'http://puzzgrid.com/'
+grids
+
+%p
+  - if @oc.round_three_puzzgrid.persisted?
+    = link_to "edit these", edit_oc_round_three_puzzgrid_path(@oc, @oc.round_three_puzzgrid), remote: true
+  - else
+    = link_to "edit these", new_oc_round_three_puzzgrid_path(@oc), remote: true
+
+= render @oc.round_three_puzzgrid

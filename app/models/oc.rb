@@ -5,6 +5,7 @@ class Oc < ApplicationRecord
 
   has_many :round_one_questions
   has_many :round_two_questions
+  has_one :round_three_puzzgrid
 
   def name=(value)
     super(value.strip)
