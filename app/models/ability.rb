@@ -4,11 +4,11 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    can :read, Show, public: true
+    can :read, Oc, public: true
 
     return unless user.persisted?
-    
-    can :manage, Show, owner_id: user.id
+
+    can :manage, Oc, owner_id: user.id
 
     # Define abilities for the passed in user here. For example:
     #

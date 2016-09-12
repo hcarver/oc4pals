@@ -5,6 +5,12 @@ class OcsController < ApplicationController
   end
 
   def create
+    if @oc.save
+      flash[:notice] = "#{@oc.name} created"
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -14,11 +20,17 @@ class OcsController < ApplicationController
   end
 
   def update
+    if @oc.save
+      flash[:notice] = "#{@oc.name} updated"
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    @oc.destroy
+    @oc.destroy!
+    flash[:notice] = "#{@oc.name} destroyed"
     redirect_to root_path
   end
-
 end
