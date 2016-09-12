@@ -16,9 +16,12 @@
         %table.table.table-striped.table-bordered
           - @your_ocs.each do |oc|
             %tr
-              %td= link_to oc.name, oc_path(oc)
+              %td
+                = oc.name
+                |
+                = link_to "Play!", oc_path(oc)
               %td= link_to "edit", edit_oc_path(oc)
-              %td= link_to "delete", destroy_oc_path(oc), method: :delete
+              %td= link_to "delete", oc_path(oc), method: :delete
   - else
     %p Here's how you get started.
     %ol
@@ -28,11 +31,12 @@
         Click on the link in the email you receive
       %li
         Start creating an OC show
-%h3 OC shows you can play
+%h3 OC shows everyone can play
 .table-responsive
   %table.table.table-striped.table-bordered
     - @public_ocs.each do |oc|
       %tr
-        %td= link_to oc.name, oc_path(oc)
-        %td= link_to "edit", edit_oc_path(oc)
-        %td= link_to "delete", destroy_oc_path(oc), method: :delete
+        %td
+          = oc.name
+          |
+          = link_to "Play!", oc_path(oc)

@@ -20,7 +20,7 @@ class OcsController < ApplicationController
   end
 
   def update
-    if @oc.save
+    if @oc.update(oc_params)
       flash[:notice] = "#{@oc.name} updated"
       redirect_to root_path
     else
@@ -32,5 +32,9 @@ class OcsController < ApplicationController
     @oc.destroy!
     flash[:notice] = "#{@oc.name} destroyed"
     redirect_to root_path
+  end
+
+  def oc_params
+    params.require(:oc).permit(:name, :public)
   end
 end

@@ -1,0 +1,14 @@
+%h1 Create a new OC
+
+- if @oc.errors.any?
+  %h6
+    = pluralize(@oc.errors.count, "error")
+    stopped me saving this OC.
+  %ul
+    - @oc.errors.full_messages.each do |msg|
+      %li= msg
+
+= form_for(@oc) do |f|
+  = render 'fields', f: f
+
+  = f.submit "Create", class: 'btn btn-primary'
