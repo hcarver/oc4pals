@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911213938) do
+ActiveRecord::Schema.define(version: 20160912185623) do
+
+  create_table "four_clue_questions", force: :cascade do |t|
+    t.integer  "oc_id"
+    t.string   "type",        null: false
+    t.integer  "position"
+    t.boolean  "is_pictures", null: false
+    t.string   "clue1",       null: false
+    t.string   "clue2",       null: false
+    t.string   "clue3",       null: false
+    t.string   "clue4",       null: false
+    t.string   "connection",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["oc_id"], name: "index_four_clue_questions_on_oc_id"
+    t.index ["type"], name: "index_four_clue_questions_on_type"
+  end
 
   create_table "ocs", force: :cascade do |t|
     t.string   "name",       null: false

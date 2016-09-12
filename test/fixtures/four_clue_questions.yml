@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  string: 
+  oc_id: one
+  is_pictures: false
+  clue1: MyString
+  clue2: MyString
+  clue3: MyString
+  clue4: MyString
+
+two:
+  string: 
+  oc_id: two
+  is_pictures: false
+  clue1: MyString
+  clue2: MyString
+  clue3: MyString
+  clue4: MyString
