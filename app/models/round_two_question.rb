@@ -1,0 +1,2 @@
+class RoundTwoQuestion < FourClueQuestion
+end

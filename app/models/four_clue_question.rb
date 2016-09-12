@@ -12,4 +12,13 @@ class FourClueQuestion < ApplicationRecord
   validates :connection, presence: true
 
   acts_as_list scope: :oc
+
+  def self.round_one
+    where(type: RoundOneQuestion.name)
+  end
+
+  def self.round_two
+    where(type: RoundTwoQuestion.name)
+  end
+
 end

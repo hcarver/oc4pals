@@ -1,0 +1,21 @@
+= form_for([q.oc, q], html: {class: 'form-inline'}, remote: true) do |f|
+  .form-group
+    = f.label :is_pictures, "Is this a picture round? (paste in the URLs of the images)"
+    = f.check_box :is_pictures, class: "form-control"
+  .form-group
+    = f.label :clue1, "Clue 1"
+    = f.text_field :clue1, class: "form-control"
+  .form-group
+    = f.label :clue2, "Clue 2"
+    = f.text_field :clue2, class: "form-control"
+  .form-group
+    = f.label :clue3, "Clue 3"
+    = f.text_field :clue3, class: "form-control"
+  .form-group
+    = f.label :clue4, "Clue 4"
+    = f.text_field :clue4, class: "form-control"
+  .form-group
+    = f.label :connection
+    = f.text_field :connection, class: "form-control"
+  .form-group
+    = f.submit 'Save', class: "btn btn-primary"

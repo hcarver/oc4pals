@@ -1,0 +1,17 @@
+%tr{class: "js-question-#{q.id}"}
+  %td
+    %b= q.connection
+    - if q.is_pictures?
+      (picture round)
+  %td
+    =q.clue1
+    %br
+    =q.clue2
+    %br
+    =q.clue3
+    %br
+    =q.clue4
+  %td
+    = link_to "edit", [:edit, q.oc, q], remote: true
+    %br
+    = link_to "destroy", [q.oc, q], remote: true, method: :delete, data: {confirm: "You sure?"}

@@ -1,0 +1,29 @@
+%h1=@oc.name
+
+- if @oc.errors.any?
+  %h6
+    = pluralize(@oc.errors.count, "error")
+    stopped me saving this OC.
+  %ul
+    - @oc.errors.full_messages.each do |msg|
+      %li= msg
+
+%h3 R1
+= link_to '+ New R1 question', new_oc_round_one_question_path(@oc), remote: :true
+
+.round-one-question-space
+
+%table.table.round-one-questions
+  - @oc.round_one_questions.each do |r1q|
+    = render "four_clue_questions/show", q: r1q
+
+%h3 R2
+= link_to '+ New R2 question', new_oc_round_two_question_path(@oc), remote: :true
+
+.round-two-question-space
+
+%table.table.round-two-questions
+  - @oc.round_two_questions.each do |r1q|
+    = render "four_clue_questions/show", q: r1q
+
+%h3 R3
