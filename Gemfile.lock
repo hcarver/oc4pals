@@ -64,6 +64,9 @@ GEM
       responders
       warden (~> 1.2.3)
     erubis (2.7.0)
+    exception_notification (4.2.1)
+      actionmailer (>= 4.0, < 6)
+      activesupport (>= 4.0, < 6)
     execjs (2.7.0)
     ffi (1.9.14)
     globalid (0.3.7)
@@ -204,6 +207,7 @@ DEPENDENCIES
   cancancan
   coffee-rails (~> 4.2)
   devise
+  exception_notification
   haml-rails
   html2haml
   jbuilder (~> 2.5)
