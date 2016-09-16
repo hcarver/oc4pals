@@ -10,25 +10,41 @@
         %h1 Round 1
         %table.oc-table
           %tr
-            %td.fragment= r1q.clue1
-            %td.fragment= r1q.clue2
-            %td.fragment= r1q.clue3
-            %td.fragment= r1q.clue4
+            - if r1q.is_pictures?
+              %td.fragment= image_tag r1q.clue1
+              %td.fragment= image_tag r1q.clue2
+              %td.fragment= image_tag r1q.clue3
+              %td.fragment= image_tag r1q.clue4
+            - else
+              %td.fragment= r1q.clue1
+              %td.fragment= r1q.clue2
+              %td.fragment= r1q.clue3
+              %td.fragment= r1q.clue4
         .fragment.oc-answer.roll-in= r1q.connection
     - @oc.round_two_questions.each do |r2q|
       %section
         %h1 Round 2
         %table.oc-table
           %tr
-            %td.fragment{data: {fragment: {index: 0}}}= r2q.clue1
-            %td.fragment{data: {fragment: {index: 1}}}= r2q.clue2
-            %td.fragment{data: {fragment: {index: 2}}}= r2q.clue3
-            %td.fragment{data: {fragment: {index: 2}}} ???
+            - if r2q.is_pictures?
+              %td.fragment{data: {fragment: {index: 0}}}= image_tag r2q.clue1
+              %td.fragment{data: {fragment: {index: 1}}}= image_tag r2q.clue2
+              %td.fragment{data: {fragment: {index: 2}}}= image_tag r2q.clue3
+              %td.fragment{data: {fragment: {index: 2}}} ???
+            - else
+              %td.fragment{data: {fragment: {index: 0}}}= r2q.clue1
+              %td.fragment{data: {fragment: {index: 1}}}= r2q.clue2
+              %td.fragment{data: {fragment: {index: 2}}}= r2q.clue3
+              %td.fragment{data: {fragment: {index: 2}}} ???
         .fragment.oc-answer.roll-in
           Answer:
-          = r2q.clue4
+          - if r2q.is_pictures?
+            = image_tag r2q.clue4
+          - else
+            = r2q.clue4
           .fragment
-            = r2q.connection
+            = surround "(", ")" do
+              = r2q.connection
     - if @oc.round_three_puzzgrid.present?
       - r3 = @oc.round_three_puzzgrid
       %section

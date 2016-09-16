@@ -1,6 +1,9 @@
 = form_for([q.oc, q], remote: true) do |f|
   = render "shared/errors", object: f.object
   .form-group
+    = f.label :connection
+    = f.text_field :connection, class: "form-control"
+  .form-group
     = f.label :is_pictures, "Is this a picture round? (paste in the URLs of the images)"
     = f.check_box :is_pictures, class: "form-control"
   .form-group.row
@@ -15,8 +18,5 @@
   .form-group.row
     = f.label :clue4, "Clue 4", class: "col-sm-3"
     .col-sm-9= f.text_field :clue4, class: "form-control"
-  .form-group
-    = f.label :connection
-    = f.text_field :connection, class: "form-control"
   .form-group
     = f.submit 'Save', class: "btn btn-primary"

@@ -32,3 +32,13 @@ table.oc-table td{
 .reveal div.oc-answer.missing-vowel-clue{
   margin-top: 60px;
 }
+
+.reveal section img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.current-fragment img {
+
+}
