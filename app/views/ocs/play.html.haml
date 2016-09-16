@@ -39,7 +39,7 @@
         .fragment.oc-answer.roll-in
           Answer:
           - if r2q.is_pictures?
-            = image_tag r2q.clue4
+            .oc-answer--image= image_tag r2q.clue4
           - else
             = r2q.clue4
           .fragment

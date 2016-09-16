@@ -39,6 +39,17 @@ table.oc-table td{
   height: auto;
 }
 
-.current-fragment img {
+.reveal .oc-answer--image img {
+  max-width: 25%;
+  margin-left: 37.5%;
+}
 
+@keyframes highlight-then-retreat {
+  0%   { transform: scale(2); }
+  50%  { transform: scale(2); }
+  100% { transform: scale(1); }
+}
+
+.current-fragment img {
+  animation: highlight-then-retreat 4s ease-in-out;
 }
