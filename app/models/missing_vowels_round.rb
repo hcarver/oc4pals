@@ -16,7 +16,7 @@ class MissingVowelsRound < ApplicationRecord
 
   acts_as_list scope: :oc
 
-  validate :clues_match_answers
+  validate :validate_clues_match_answers
 
   def clue1=(value)
     super(value&.upcase)
@@ -50,13 +50,23 @@ class MissingVowelsRound < ApplicationRecord
     super(value&.upcase)
   end
 
-  def clues_match_answers
+  def clues_and_answer_attributes
     {
       clue1: :answer1,
       clue2: :answer2,
       clue3: :answer3,
       clue4: :answer4
-    }.each do |clue_n, answer_n|
+    }
+  end
+
+  def clues_and_answers
+    Hash[clues_and_answer_attributes.map do |clue_n, answer_n|
+      [send(clue_n), send(answer_n)]
+    end]
+  end
+
+  def validate_clues_match_answers
+    clues_and_answer_attributes.each do |clue_n, answer_n|
       clue = self.send(clue_n) || ""
       answer = self.send(answer_n) || ""
 

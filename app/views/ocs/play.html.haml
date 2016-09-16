@@ -5,6 +5,47 @@
       %p Press right to continue
     %section
       %h1 Let's begin the quiz
+    - @oc.round_one_questions.each do |r1q|
+      %section
+        %h1 Round 1
+        %table.oc-table
+          %tr
+            %td.fragment= r1q.clue1
+            %td.fragment= r1q.clue2
+            %td.fragment= r1q.clue3
+            %td.fragment= r1q.clue4
+        .fragment.oc-answer.roll-in= r1q.connection
+    - @oc.round_two_questions.each do |r2q|
+      %section
+        %h1 Round 2
+        %table.oc-table
+          %tr
+            %td.fragment{data: {fragment: {index: 0}}}= r2q.clue1
+            %td.fragment{data: {fragment: {index: 1}}}= r2q.clue2
+            %td.fragment{data: {fragment: {index: 2}}}= r2q.clue3
+            %td.fragment{data: {fragment: {index: 2}}} ???
+        .fragment.oc-answer.roll-in
+          Answer:
+          = r2q.clue4
+          .fragment
+            = r2q.connection
+    - if @oc.round_three_puzzgrid.present?
+      - r3 = @oc.round_three_puzzgrid
+      %section
+        %h1 Round 3
+        %p
+          Time for your wall games! Click these links to play them
+        %p= link_to "Team 1's grid", r3.grid_one, target: "_blank"
+        %p= link_to "Team 2's grid", r3.grid_two, target: "_blank"
+
+    - @oc.missing_vowels_rounds.each do |mvr|
+      - mvr.clues_and_answers.each do |clue, answer|
+        %section
+          %h4 Missing Vowels
+          %h2= mvr.connection
+          .fragment.oc-answer.roll-in.missing-vowel-clue= clue
+          .fragment.oc-answer.roll-in.missing-vowel-answer= answer
+
     %section#last-slide
       %h1 End of Quiz!
       %h3 Did you have fun?
@@ -20,138 +61,10 @@
           = succeed "." do
             %a{:href => "http://creativecommons.org/licenses/by-sa/4.0/deed.en_GB", :rel => "license"} Creative Commons Attribution-ShareAlike 4.0 International License
 :javascript
-  function make_round(content, title, answer){
-          template = ['<section>',
-            '<h1>TITLE</h1>',
-            '<table class="oc-table"><tr>',
-              '<td class="fragment">CLUE1</td>',
-              '<td class="fragment">CLUE2</td>',
-              '<td class="fragment">CLUE3</td>',
-              '<td class="fragment">CLUE4</td>',
-            '</tr></table>',
-            '<div class="fragment oc-answer roll-in">ANSWER</div>',
-          '</section>'].join('');
-          new_section = $(template.replace("TITLE", title).replace("CLUE1", content[0]).replace("CLUE2", content[1]).replace("CLUE3", content[2]).replace("CLUE4", content[3]).replace("ANSWER", answer));
-
-          $('#last-slide').before(new_section);
-        }
-
-        function make_mv_page(connection, clue, answer){
-          template = ['<section>',
-            '<h4>Missing Vowels</h4>',
-            '<h2>TITLE</h2>',
-            '<div class="fragment oc-answer roll-in missing-vowel-clue">CLUE</div>',
-            '<div class="fragment oc-answer roll-in missing-vowel-answer">ANSWER</div>',
-          '</section>'].join('');
-          new_section = $(template.replace("TITLE", connection).replace("CLUE", clue).replace("ANSWER", answer));
-
-          $('#last-slide').before(new_section);
-        }
-
-        round_1 = [
-          {
-            "clues": ["Band", "War", "See", "Jig"],
-            "answer": "Words that precede 'saw'"
-          },
-          {
-            "clues": ["Sternutatory", "Somnolent", "Shy", "Medic (abbrev)"],
-            "answer": "7 Dwarves"
-          },
-          {
-            "clues": ["Days of Our Lives", "Pyramus and Thisbe", "There and Back Again", "The Mousetrap"],
-            "answer": "Art within art"
-          },
-          {
-            "clues": ["Ping pong", "Aspirin", "Google", "Hoover"],
-            "answer": "Genericised brand names"
-          },
-          {
-            "clues" : ["<img src='images/fenchurch.jpg'>", "<img src='images/marylebone.jpg'>", "<img src='images/liverpool_street.jpg'>", "<img src='images/kings_cross.jpg'>"],
-            "answer": "Monopoly Stations"
-          },
-          {
-            "clues": ["Familiar sex", "Cunt water", "Sporadic knockers", "Daffodil dogging"],
-            "answer": "Hidden profanity"
-          }
-        ]
-
-        round_2 = [
-        {
-          "answer": "Etymology of weekdays",
-          "clues": ["Odin", "Thor", "Frig", "Saturn"]
-        },
-        {
-          "answer": "US States with increasing numbers of syllables",
-          "clues": ["ME", "GA", "AK", "CA / AL / CT etc."]
-        },
-        {
-          "answer": "Decreasing numbers of stars on flags",
-          "clues": ["New Zealand", "Burundi", "Syria", "(E.g.) Israel"]
-        },
-        {
-          "answer": "The Owl and the Pussycat (last words of lines)",
-          "clues": ["Sea", "Boat", "Money", "Note"]
-        },
-        {
-          "answer": "Versions of Microsoft Windows ",
-          "clues": ["10", "8", "7", "Vista"]
-        },
-        {
-          "answer": "Most popular girls' names, 2015",
-          "clues": ["Emily", "Isla", "Olivia", "Amelia"]
-        },
-        {
-          "answer": "Round 3",
-          "clues": ["Time for your wall games!",
-          "<a href='http://puzzgrid.com/grid.php?id=5634'>Go (1)</a>",
-          "<a href='http://puzzgrid.com/grid.php?id=5636'>Go (2)</a>", ""]
-        }
-        ]
-
-        round_4 = [
-          {
-            "connection": "Authors' pseudonyms and their real names",
-            "clues":["GR GL TN DMR YNN VNS", "CRR RBL LN DCH RLT TBR NT", "GR GRW L LN DRCB LR", "RB RTG LB RT HN DJ KR WLN G"],
-            "answers": ["George Eliot and Mary Ann Evans",
-              "Currer Bell and Charlotte Bronte", "George Orwell and Eric Blair", "Robert Galbraith and J K Rowling"]
-          },
-          {
-            "connection": "Roman gods and their Greek equivalents",
-            "clues":["N PTNN DPSD N","JPT RN DZS","CP DND RS","DNND RT MS"],
-            "answers": ["Neptune and Poseidon", "Jupiter and Zeus", "Cupid and Eros", "Diana and Artemis"]
-          },
-          {
-            "connection": "Proverbs",
-            "clues":["LKB FRY LP", "PR DCM SB FRFL L", "ST TC HNT MS VSNN", "TMN YCK SSP LT HB RTH"],
-            "answers": ["Look before you leap", "Pride comes before a fall", "A stitch in time saves nine", "Too many cooks spoil the broth"]
-          }
-        ]
-
-        for(var i = 0; i < round_1.length; ++i){
-          this_round = round_1[i];
-          make_round(this_round["clues"], "Round 1", this_round["answer"]);
-        }
-
-        for(var i = 0; i < round_2.length; ++i){
-          this_round = round_2[i];
-          clues = this_round["clues"].slice(0,-1);
-          clues.push("???")
-          make_round(clues, "Round 2", "Answer: " + this_round["clues"][3]+"<br/>"+this_round["answer"]);
-        }
-
-        for(var i=0; i < round_4.length; ++i){
-          this_round = round_4[i];
-          connection= this_round["connection"];
-          for(var j=0; j<this_round["clues"].length; j++){
-            make_mv_page(connection, this_round["clues"][j], this_round["answers"][j]);
-          }
-        }
-
-  			Reveal.initialize({
-  				controls: true,
-  				progress: true,
-  				history: true,
-  				center: true,
-  				theme: 'night', // available themes are in /css/theme
-  				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
-  			});
+  Reveal.initialize({
+  	controls: true,
+  	progress: true,
+  	history: true,
+  	center: true,
+  	transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+  });

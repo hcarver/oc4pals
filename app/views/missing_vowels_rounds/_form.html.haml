@@ -1,5 +1,8 @@
 = form_for([round.oc, round], remote: true) do |f|
   = render "shared/errors", object: f.object
+  .form-group
+    = f.label :connection
+    = f.text_field :connection, class: "form-control"
   .form-group.row
     = f.label :answer1, "Answer 1", class: 'col-sm-3'
     .col-sm-3= f.text_field :answer1, class: "form-control js-missing-vowels-round-answer"
@@ -21,9 +24,6 @@
     = f.label :clue4, "Clue 4", class: 'col-sm-3'
     .col-sm-3= f.text_field :clue4, class: "form-control js-missing-vowels-round-clue"
   .form-group
-    = f.label :connection
-    = f.text_field :connection, class: "form-control"
-  .form-group
     = f.submit 'Save', class: "btn btn-primary"
 
 :javascript
@@ -36,7 +36,7 @@
 
     var arr = clue_candidate.split('');
     for(var n = arr.length - 1; n > 0; n--) {
-      if(Math.random() < 0.3){
+      if(Math.random() < 0.4){
         arr.splice(n, 0, " ");
       }
     }
