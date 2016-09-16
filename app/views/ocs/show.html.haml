@@ -1,14 +1,8 @@
-%h1=@oc.name
+%p=link_to "Back to home", root_path
 
-- if @oc.errors.any?
-  %h6
-    = pluralize(@oc.errors.count, "error")
-    stopped me saving this OC.
-  %ul
-    - @oc.errors.full_messages.each do |msg|
-      %li= msg
+%h1.oc-page-header=@oc.name
 
-%h3 R1
+%h3.oc-page-header R1
 = link_to '+ New R1 question', new_oc_round_one_question_path(@oc), remote: :true
 
 .round-one-question-space
@@ -17,7 +11,7 @@
   - @oc.round_one_questions.each do |r1q|
     = render "four_clue_questions/show", q: r1q
 
-%h3 R2
+%h3.oc-page-header R2
 = link_to '+ New R2 question', new_oc_round_two_question_path(@oc), remote: :true
 
 .round-two-question-space
@@ -26,7 +20,7 @@
   - @oc.round_two_questions.each do |r1q|
     = render "four_clue_questions/show", q: r1q
 
-%h3 R3
+%h3.oc-page-header R3
 
 URLs for your
 =link_to 'Puzzgrid', 'http://puzzgrid.com/'
@@ -39,3 +33,14 @@ grids
     = link_to "edit these", new_oc_round_three_puzzgrid_path(@oc), remote: true
 
 = render @oc.round_three_puzzgrid
+
+%h3.oc-page-header R4
+= link_to '+ New Missing Vowels question', new_oc_missing_vowels_round_path(@oc), remote: :true
+
+.js-missing-vowels-round-space
+
+%table.table.missing-vowels-rounds
+  - @oc.missing_vowels_rounds.each do |r4q|
+    = render "missing_vowels_rounds/show", round: r4q
+
+%p=link_to "Back to home", root_path

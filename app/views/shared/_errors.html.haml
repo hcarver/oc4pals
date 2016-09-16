@@ -1,0 +1,11 @@
+- if object.errors.any?
+  #error_explanation.text-left
+    .alert.alert-danger
+      The form contains the following errors:
+      %ul.list-unstyled
+        / Avoid displaying several errors for the same field
+        - object.errors.each do |field, msg|
+          %li
+            - if field != :base
+              = object.class.human_attribute_name field
+            = msg

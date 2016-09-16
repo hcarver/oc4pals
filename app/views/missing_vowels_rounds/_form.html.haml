@@ -1,0 +1,45 @@
+= form_for([round.oc, round], remote: true) do |f|
+  = render "shared/errors", object: f.object
+  .form-group.row
+    = f.label :answer1, "Answer 1", class: 'col-sm-3'
+    .col-sm-3= f.text_field :answer1, class: "form-control js-missing-vowels-round-answer"
+    = f.label :clue1, "Clue 1", class: 'col-sm-3'
+    .col-sm-3= f.text_field :clue1, class: "form-control js-missing-vowels-round-clue"
+  .form-group.row
+    = f.label :answer2, "Answer 2", class: 'col-sm-3'
+    .col-sm-3= f.text_field :answer2, class: "form-control js-missing-vowels-round-answer"
+    = f.label :clue2, "Clue 2", class: 'col-sm-3'
+    .col-sm-3= f.text_field :clue2, class: "form-control js-missing-vowels-round-clue"
+  .form-group.row
+    = f.label :answer3, "Answer 3", class: 'col-sm-3'
+    .col-sm-3= f.text_field :answer3, class: "form-control js-missing-vowels-round-answer"
+    = f.label :clue3, "Clue 3", class: 'col-sm-3'
+    .col-sm-3= f.text_field :clue3, class: "form-control js-missing-vowels-round-clue"
+  .form-group.row
+    = f.label :answer4, "Answer 4", class: 'col-sm-3'
+    .col-sm-3= f.text_field :answer4, class: "form-control js-missing-vowels-round-answer"
+    = f.label :clue4, "Clue 4", class: 'col-sm-3'
+    .col-sm-3= f.text_field :clue4, class: "form-control js-missing-vowels-round-clue"
+  .form-group
+    = f.label :connection
+    = f.text_field :connection, class: "form-control"
+  .form-group
+    = f.submit 'Save', class: "btn btn-primary"
+
+:javascript
+  $(".js-missing-vowels-round-answer").on('input', function() {
+    $this = $(this);
+    var clue = $this.closest(".form-group").find(".js-missing-vowels-round-clue");
+
+    var answer = $this.val();
+    var clue_candidate = answer.replace(/[aeiouAEIOU\s]/g, '').toUpperCase();
+
+    var arr = clue_candidate.split('');
+    for(var n = arr.length - 1; n > 0; n--) {
+      if(Math.random() < 0.3){
+        arr.splice(n, 0, " ");
+      }
+    }
+
+    clue.val(arr.join('').replace(/\s+/g, ' ').trim());
+  });

@@ -9,7 +9,7 @@ class RoundOneQuestionsController < ApplicationController
   def create
     if @round_one_question.save
     else
-      render js: 'alert("Couldn\'t save that. Try again.")'
+      render 'edit'
     end
   end
 
@@ -17,7 +17,9 @@ class RoundOneQuestionsController < ApplicationController
   end
 
   def update
-    @round_one_question.update(round_one_question_params)
+    if !@round_one_question.update(round_one_question_params)
+      render 'edit'
+    end
   end
 
   def destroy

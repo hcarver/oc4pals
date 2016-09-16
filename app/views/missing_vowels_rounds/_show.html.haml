@@ -1,0 +1,23 @@
+%tr{class: "js-question-#{round.id}"}
+  %td
+    %b= round.connection
+  %td
+    = round.clue1
+    = surround '(', ')' do
+      = round.answer1
+    %br
+    = round.clue2
+    = surround '(', ')' do
+      = round.answer2
+    %br
+    = round.clue3
+    = surround '(', ')' do
+      = round.answer3
+    %br
+    = round.clue4
+    = surround '(', ')' do
+      = round.answer4
+  %td
+    = link_to "edit", [:edit, round.oc, round], remote: true
+    %br
+    = link_to "destroy", [round.oc, round], remote: true, method: :delete, data: {confirm: "You sure?"}
