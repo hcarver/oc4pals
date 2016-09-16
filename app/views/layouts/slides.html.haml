@@ -1,0 +1,16 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %title Only Connect For Friends!
+    %meta{:content => "A custom-made Only Connect game, hurrah!", :name => "description"}/
+    %meta{:content => "Hywel Carver", :name => "author"}/
+    %meta{:content => "yes", :name => "apple-mobile-web-app-capable"}/
+    %meta{:content => "black-translucent", :name => "apple-mobile-web-app-status-bar-style"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
+
+    = stylesheet_link_tag 'oc', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'oc', 'data-turbolinks-track': 'reload'
+  %body
+    = yield

@@ -1,0 +1,34 @@
+table.oc-table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+table.oc-table td{
+  text-align: center;
+  background-color: #a4ddee;
+  background: radial-gradient(#a4ddee 10%, #88bee4);
+  border: 1px solid #88bee4;
+  width: 25%;
+  color: #333;
+  padding: 30px 3px;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+
+.reveal div.oc-answer{
+  background-color: #0d4171;
+  width: 100%;
+  margin-top: 20px;
+  color: #ccc;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.missing-vowel-clue, .missing-vowel-answer{
+  text-transform: uppercase;
+}
+
+.reveal div.oc-answer.missing-vowel-clue{
+  margin-top: 60px;
+}

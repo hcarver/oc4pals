@@ -20,7 +20,7 @@
               %td
                 = oc.name
                 |
-                = link_to "Play!", oc_path(oc)
+                = link_to "Play!", play_oc_path(oc)
               %td= link_to "edit name / public", edit_oc_path(oc)
               %td= link_to "edit questions", oc_path(oc)
               %td= link_to "delete", oc_path(oc), method: :delete
@@ -41,4 +41,4 @@
         %td
           = oc.name
           |
-          = link_to "Play!", oc_path(oc)
+          = link_to "Play!", play_oc_path(oc)

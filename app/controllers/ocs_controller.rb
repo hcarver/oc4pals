@@ -19,6 +19,10 @@ class OcsController < ApplicationController
     end
   end
 
+  def play
+    render 'play', layout: 'slides'
+  end
+
   def edit
   end
 

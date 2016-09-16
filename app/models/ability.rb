@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    can :read, Oc, public: true
+    can [:index, :play], Oc, public: true
 
     return unless user.persisted?
 
