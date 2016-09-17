@@ -4,7 +4,9 @@
     This is Only Connect For Pals, a site for creating your own quizzes in the style of Only Connect that you can use with your friends.
   %hr.m-y-2/
   - if user_signed_in?
-    %h2 You're signed in
+    %h4
+      You are signed in as
+      = current_user.email
     %p
       = link_to "Create a new OC show!", new_oc_path
     %h4 Your OC shows

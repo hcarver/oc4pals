@@ -2,7 +2,15 @@
   .slides
     %section
       %h1 Only Connect
-      %p Press right to continue
+      %p Press right to start
+      %p= link_to "Click here to go back to the homepage", root_path
+      %ul
+        %li You will need to keep score yourself
+        %li
+          You will need to countdown time on each question yourself
+          %small (40 seconds in round 1, 40 seconds in round 2, 3 minutes in round 3)
+        %li Press right to move between slides
+        %li You will need to provide your own Victoria Coren-Mitchell
     %section
       %h1 Let's begin the quiz
     - @oc.round_one_questions.each do |r1q|
@@ -65,6 +73,7 @@
     %section#last-slide
       %h1 End of Quiz!
       %h3 Did you have fun?
+      %p= link_to "Click here to go back to the homepage", root_path
       %p
         %small
           %a{:href => "http://creativecommons.org/licenses/by-sa/4.0/deed.en_GB", :rel => "license"}
