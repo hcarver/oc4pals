@@ -8,7 +8,7 @@ class SignInController < ApplicationController
     user.authentication_token = nil
     if user.save
       UserMailer.login(user).deliver_now
-      flash[:notice] = "I'm sending you an email now. Click the link in the email to sign in."
+      flash[:notice] = "I'll send you an email any second now. Click the link in the email to sign in."
       redirect_to root_path
     else
       flash[:alert] = "Something went wrong. Try again or contact Hywel."
