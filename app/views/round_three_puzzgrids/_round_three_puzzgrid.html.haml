@@ -2,12 +2,12 @@
   %p
     %b Grid 1
     - if round_three_puzzgrid.grid_one.present?
-      = link_to round_three_puzzgrid.grid_one
+      = link_to round_three_puzzgrid.grid_one, round_three_puzzgrid.grid_one, target: "_blank"
     - else
       You haven't entered one
   %p
     %b Grid 2
     - if round_three_puzzgrid.grid_two.present?
-      = link_to round_three_puzzgrid.grid_two
+      = link_to round_three_puzzgrid.grid_two, round_three_puzzgrid.grid_two, target: "_blank"
     - else
       You haven't entered one
