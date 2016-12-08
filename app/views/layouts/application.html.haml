@@ -2,13 +2,13 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Oc For pals
+    %title Connectophile
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %nav.navbar.navbar-dark.bg-primary
-      %a.navbar-brand{:href => "#"} Only Connect For Pals
+      %a.navbar-brand{:href => "#"} Connectophile
       %ul.nav.navbar-nav
         %li.nav-item.active
           = link_to "Get started", new_sign_in_path, class:"nav-link"
