@@ -28,7 +28,7 @@
               %td.fragment= r1q.clue2
               %td.fragment= r1q.clue3
               %td.fragment= r1q.clue4
-        .fragment.oc-answer.roll-in= r1q.connection
+        .fragment.oc-answer.roll-in= r1q.answer
     - @oc.round_two_questions.each do |r2q|
       %section
         %h1 Round 2
@@ -52,7 +52,7 @@
             = r2q.clue4
           .fragment
             = surround "(", ")" do
-              = r2q.connection
+              = r2q.answer
     - if @oc.round_three_puzzgrid.present?
       - r3 = @oc.round_three_puzzgrid
       %section
@@ -66,7 +66,7 @@
       - mvr.clues_and_answers.each do |clue, answer|
         %section
           %h4 Missing Vowels
-          %h2= mvr.connection
+          %h2= mvr.answer
           .fragment.oc-answer.roll-in.missing-vowel-clue= clue
           .fragment.oc-answer.roll-in.missing-vowel-answer= answer
 

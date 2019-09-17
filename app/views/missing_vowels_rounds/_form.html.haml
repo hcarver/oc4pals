@@ -1,8 +1,8 @@
 = form_for([round.oc, round], remote: true) do |f|
   = render "shared/errors", object: f.object
   .form-group
-    = f.label :connection
-    = f.text_field :connection, class: "form-control"
+    = f.label :answer
+    = f.text_field :answer, class: "form-control"
   .form-group.row
     = f.label :answer1, "Answer 1", class: 'col-sm-3'
     .col-sm-3= f.text_field :answer1, class: "form-control js-missing-vowels-round-answer"

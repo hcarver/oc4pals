@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914064602) do
+ActiveRecord::Schema.define(version: 20190917153648) do
 
   create_table "four_clue_questions", force: :cascade do |t|
     t.integer  "oc_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160914064602) do
     t.string   "clue2",       null: false
     t.string   "clue3",       null: false
     t.string   "clue4",       null: false
-    t.string   "connection",  null: false
+    t.string   "answer",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["oc_id"], name: "index_four_clue_questions_on_oc_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160914064602) do
 
   create_table "missing_vowels_rounds", force: :cascade do |t|
     t.integer  "oc_id"
-    t.string   "connection", null: false
+    t.string   "answer",     null: false
     t.integer  "position"
     t.string   "clue1",      null: false
     t.string   "clue2",      null: false

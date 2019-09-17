@@ -12,7 +12,7 @@ class MissingVowelsRound < ApplicationRecord
   validates :answer3, presence: true, length: { minimum: 1 }
   validates :answer4, presence: true, length: { minimum: 1 }
 
-  validates :connection, presence: true
+  validates :answer, presence: true
 
   acts_as_list scope: :oc
 

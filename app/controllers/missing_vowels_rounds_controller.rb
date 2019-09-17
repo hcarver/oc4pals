@@ -25,7 +25,7 @@ class MissingVowelsRoundsController < ApplicationController
 
   def missing_vowels_round_params
     params.require(:missing_vowels_round).permit(
-      :connection, :position, :clue1, :clue2, :clue3, :clue4, :answer1,
+      :answer, :position, :clue1, :clue2, :clue3, :clue4, :answer1,
       :answer2, :answer3, :answer4)
   end
 end

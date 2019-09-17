@@ -9,7 +9,7 @@ class FourClueQuestion < ApplicationRecord
   validates :clue3, presence: true
   validates :clue4, presence: true
 
-  validates :connection, presence: true
+  validates :answer, presence: true
 
   acts_as_list scope: :oc
 

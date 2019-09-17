@@ -28,6 +28,6 @@ class RoundOneQuestionsController < ApplicationController
 
   def round_one_question_params
     params.require(:round_one_question).permit(:is_pictures, :clue1, :clue2,
-      :clue3, :clue4, :connection)
+      :clue3, :clue4, :answer)
   end
 end
